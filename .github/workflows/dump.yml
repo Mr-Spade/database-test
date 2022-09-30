@@ -8,12 +8,12 @@ jobs:
   dump:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - name: download tool
-        run: |
-          wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
-          tar -zxvf mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
-          cp mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin/mongodump .
+#       - uses: actions/checkout@v2
+#       - name: download tool
+#         run: |
+#           wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
+#           tar -zxvf mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
+#           cp mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin/mongodump .
       - name: dump
         run: |
           mongodump --uri="mongodb+srv://amonitoj-main.szbedsg.mongodb.net/" --username ${{ secrets.MONGODB_USERNAME }} --password ${{ secrets.MONGODB_PASSWORD }}
