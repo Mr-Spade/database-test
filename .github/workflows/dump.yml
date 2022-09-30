@@ -1,7 +1,8 @@
 name: Dump database
 on:
   push:
-    branches: [ "main" ]
+    paths:
+      - '**.yml'
   schedule:
     - cron: 57 * * * *
 jobs:
