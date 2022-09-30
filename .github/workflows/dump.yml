@@ -8,9 +8,10 @@ jobs:
   dump:
     runs-on: ubuntu-20.04
     steps:
-      - name: dump data
+      - name: clone
         uses: actions/checkout@v2.4.2
-      - run: |
+      - name: dump data
+        run: |
           rm -rf dump
           mongodump "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@${{secrets.MONGODB_URL}}/"
           echo Sync MongoDB data at $(date +%F%n%T). >README.md
