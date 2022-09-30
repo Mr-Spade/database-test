@@ -8,7 +8,8 @@ jobs:
   dump:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2.4.2
+      - name: dump data
+        uses: actions/checkout@v2.4.2
       - run: |
           rm -rf dump
           mongodump "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@${{secrets.MONGODB_URL}}/"
