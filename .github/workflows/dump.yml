@@ -10,11 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: mongo-clone-action
-        # You may pin to the exact commit or the version.
-        # uses: Maggi64/mongo-clone-action@2bfa51c266935b1395bd2fc6e405eea4b705c05f
-        uses: Maggi64/mongo-clone-action@0.2
-        with:
-          # MongoDB connect url that includes username, password & database name you want to clone from
-          source: mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/AmonitOJ
-          # MongoDB connect url that includes username, password & database name you want to clone to
-          target: mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/AmonitOJ2
+        run: |
+          mongosh "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/"
