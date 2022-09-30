@@ -8,9 +8,13 @@ jobs:
   dump:
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: download tool
         run: |
           wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
           tar -zxvf mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
-          cd mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin
+          cp mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin/mongodump .
+      - name: dump
+        run: |
+          ./mongodump "${{ Secret.MONGODB_URL }}" --username ${{ Secret.MONGODB_USERNAME }} --password ${{ Secret.MONGODB_PASSWORD }}
           ls
