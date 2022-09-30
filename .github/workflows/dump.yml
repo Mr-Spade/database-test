@@ -16,6 +16,7 @@ jobs:
           cp mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin/mongodump .
       - name: dump
         run: |
+          sudo echo "nameserver 8.8.8.8 ">> /etc/resolv.conf
           cat /etc/resolv.conf
-          ./mongodump "mongodb+srv://amonitoj-main.szbedsg.mongodb.net/" --username ${{ secrets.MONGODB_USERNAME }} --password ${{ secrets.MONGODB_PASSWORD }}
+          mongodump "mongodb+srv://amonitoj-main.szbedsg.mongodb.net/" --username ${{ secrets.MONGODB_USERNAME }} --password ${{ secrets.MONGODB_PASSWORD }}
           ls
