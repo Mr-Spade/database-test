@@ -8,8 +8,12 @@ jobs:
   dump:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - name: dump
-        run: |
+      - uses: actions/checkout@v2.4.2
+      - run: |
+          rm -rf dump
           mongodump "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/"
-          ls
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "sync database"
+          git push
