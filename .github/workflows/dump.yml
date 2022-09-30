@@ -8,13 +8,13 @@ jobs:
   dump:
     runs-on: ubuntu-18.04
     steps:
-#       - uses: actions/checkout@v2
-#       - name: download tool
-#         run: |
-#           wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
-#           tar -zxvf mongodb-database-tools-ubuntu1804-x86_64-100.6.0.tgz
-#           cp mongodb-database-tools-ubuntu1804-x86_64-100.6.0/bin/mongodump .
-      - name: dump
-        run: |
-          mongodump --uri="mongodb+srv://amonitoj-main.szbedsg.mongodb.net/" --username ${{ secrets.MONGODB_USERNAME }} --password ${{ secrets.MONGODB_PASSWORD }}
-          ls
+      - uses: actions/checkout@v2
+      - name: mongo-clone-action
+        # You may pin to the exact commit or the version.
+        # uses: Maggi64/mongo-clone-action@2bfa51c266935b1395bd2fc6e405eea4b705c05f
+        uses: Maggi64/mongo-clone-action@0.2
+        with:
+          # MongoDB connect url that includes username, password & database name you want to clone from
+          source: mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/AmonitOJ
+          # MongoDB connect url that includes username, password & database name you want to clone to
+          target: mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/AmonitOJ2
