@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: mongo-clone-action
         run: |
-          mongosh "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/"
+          mongodump "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@amonitoj-main.szbedsg.mongodb.net/"
