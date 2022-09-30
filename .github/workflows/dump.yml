@@ -15,7 +15,7 @@ jobs:
         run: |
           rm -rf dump
           mongodump "mongodb+srv://${{secrets.MONGODB_USERNAME}}:${{secrets.MONGODB_PASSWORD}}@${{secrets.MONGODB_URL}}/"
-          echo Sync MongoDB data at $(date +%F%n%T). >README.md
+          echo Sync MongoDB data at $(date). >README.md
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
